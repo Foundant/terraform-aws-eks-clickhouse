@@ -69,6 +69,7 @@ module "clickhouse_cluster" {
   clickhouse_cluster_enable_loadbalancer = var.clickhouse_cluster_enable_loadbalancer
   clickhouse_cluster_chart_version       = var.clickhouse_cluster_chart_version
   clickhouse_keeper_chart_version        = var.clickhouse_keeper_chart_version
+  clickhouse_version                     = var.clickhouse_version
 
   k8s_availability_zones            = var.eks_availability_zones
   k8s_cluster_region                = var.eks_region

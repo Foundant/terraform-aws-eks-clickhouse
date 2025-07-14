@@ -21,3 +21,8 @@ output "cluster_endpoint" {
   value       = module.eks.cluster_endpoint
   description = "The endpoint for your Kubernetes API server"
 }
+
+output "cluster_oidc_issuer_url" {
+  value       = module.eks.cluster_oidc_issuer_url
+  description = "The URL on the EKS cluster's OIDC Issuer"
+}

@@ -49,16 +49,9 @@ variable "clickhouse_cluster_namespace" {
   type        = string
 }
 
-variable "clickhouse_cluster_user" {
-  description = "ClickHouse user"
-  default     = "test"
+variable "clickhouse_master_user_secret_arn" {
+  description = "ARN of AWS Secrets Manager secret containing ClickHouse master user credentials"
   type        = string
-}
-
-variable "clickhouse_cluster_password" {
-  description = "ClickHouse password"
-  type        = string
-  default     = null
 }
 
 variable "clickhouse_cluster_enable_loadbalancer" {
@@ -82,6 +75,18 @@ variable "clickhouse_keeper_chart_version" {
 variable "clickhouse_version" {
   description = "Version of the ClickHouse server nodes"
   default = "altinity/clickhouse-server:25.3.3.20183.altinityantalya-alpine"
+}
+
+variable "clickhouse_backup_retention_days" {
+  description = "Number of days to retain ClickHouse backups in S3"
+  type        = number
+  default     = 30
+}
+
+variable "clickhouse_backup_chart_version" {
+  description = "Version of the ClickHouse backup helm chart"
+  type        = string
+  default     = "0.2.1"
 }
 
 ################################################################################

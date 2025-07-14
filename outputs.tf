@@ -24,17 +24,26 @@ output "eks_configure_kubectl" {
   value       = "aws eks --region ${var.eks_region} update-kubeconfig --name ${module.eks_aws.cluster_name}"
 }
 
-output "clickhouse_cluster_password" {
-  description = "The generated password for the ClickHouse cluster"
-  value       = length(module.clickhouse_cluster) > 0 ? module.clickhouse_cluster[0].clickhouse_cluster_password : ""
-  sensitive   = true
-}
-
 output "clickhouse_cluster_url" {
   description = "The public URL for the ClickHouse cluster"
   value       = length(module.clickhouse_cluster) > 0 ? module.clickhouse_cluster[0].clickhouse_cluster_url : ""
 }
 
+output "clickhouse_master_user_secret_arn" {
+  description = "ARN of the Secrets Manager secret containing ClickHouse credentials"
+  value       = var.clickhouse_master_user_secret_arn
+}
+
 output "cluster_node_pools" {
   value = module.eks_aws.cluster_node_pools
+}
+
+output "clickhouse_backup_s3_bucket" {
+  description = "S3 bucket name for ClickHouse backups"
+  value       = var.install_clickhouse_cluster ? aws_s3_bucket.clickhouse_backups[0].id : ""
+}
+
+output "clickhouse_backup_s3_bucket_arn" {
+  description = "S3 bucket ARN for ClickHouse backups"
+  value       = var.install_clickhouse_cluster ? aws_s3_bucket.clickhouse_backups[0].arn : ""
 }
