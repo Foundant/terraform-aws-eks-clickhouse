@@ -51,5 +51,6 @@ resource "helm_release" "clickhouse_cluster" {
     service_type  = var.clickhouse_cluster_enable_loadbalancer ? "loadbalancer-external" : "cluster-ip"
     user          = var.clickhouse_cluster_user
     password      = local.clickhouse_password
+    image         = var.clickhouse_version
   })]
 }

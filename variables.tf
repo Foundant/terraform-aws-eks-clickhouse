@@ -30,7 +30,7 @@ variable "clickhouse_operator_namespace" {
 
 variable "clickhouse_operator_version" {
   description = "Version of the Altinity Kubernetes operator for ClickHouse"
-  default     = "0.24.4"
+  default     = "0.25.1"
   type        = string
 }
 
@@ -77,6 +77,11 @@ variable "clickhouse_keeper_chart_version" {
   description = "Version of the ClickHouse Keeper cluster helm chart version"
   default     = "0.1.4"
   type        = string
+}
+
+variable "clickhouse_version" {
+  description = "Version of the ClickHouse server nodes"
+  default = "altinity/clickhouse-server:25.3.3.20183.altinityantalya-alpine"
 }
 
 ################################################################################
@@ -184,7 +189,7 @@ variable "eks_node_pools" {
 }
 
 variable "eks_enable_nat_gateway" {
-  description = "Enable NAT Gateway and private subnets (recommeded)"
+  description = "Enable NAT Gateway and private subnets (recommended)"
   type        = bool
   default     = true
 }

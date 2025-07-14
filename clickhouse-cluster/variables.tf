@@ -54,6 +54,12 @@ variable "clickhouse_cluster_enable_loadbalancer" {
   default     = false
 }
 
+variable "clickhouse_version" {
+  description = "Version of the ClickHouse server nodes"
+  default     = "altinity/clickhouse-server:25.3.3.20183.altinityantalya-alpine"
+  type        = string
+}
+
 ################################################################################
 # K8S
 ################################################################################
